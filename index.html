@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Arthur & Lara 💖</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg1: #ffd1dc;
+      --bg2: #ffe9f0;
+      --card: #ffffffcc;
+      --text: #3e3e3e;
+      --accent: #ff5b9f;
+      --accent-ink: #7b2a4e;
+      --carousel-cycle: 36s;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at 20% 0%, var(--bg1), var(--bg2));
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-left)) max(24px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-right));
+    }
+    .card {
+      width: min(820px, 100%);
+      background: var(--card);
+      backdrop-filter: blur(6px);
+      border-radius: 24px;
+      box-shadow: 0 18px 50px #0000001a;
+      padding: clamp(16px, 4vw, 32px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    h1 {
+      margin: 0 0 4px;
+      font-weight: 600;
+      font-size: clamp(24px, 5.2vw, 38px);
+      line-height: 1.15;
+    }
+    .subtitle {
+      margin: 0 0 16px;
+      opacity: .85;
+      font-size: clamp(13px, 3.5vw, 15px);
+    }
+    .timer {
+      margin: 10px auto 6px;
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      font-size: clamp(18px, 6vw, 26px);
+      display: none;
+    }
+    .units {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 14px 0 6px;
+    }
+    @media (min-width: 560px) {
+      .units { grid-template-columns: repeat(6, 1fr); }
+    }
+    .unit {
+      background: #fff;
+      border-radius: 14px;
+      padding: 12px 8px;
+      box-shadow: 0 6px 18px #00000010;
+    }
+    .unit .num {
+      font-size: clamp(18px, 6vw, 26px);
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .unit .label {
+      font-size: 11px; opacity: .8; letter-spacing: .5px; text-transform: uppercase;
+    }
+    .since {
+      margin-top: 10px;
+      font-size: 13px;
+      opacity: .85;
+    }
+    .cta {
+      display: block;
+      margin: 18px auto 2px;
+      width: min(520px, 100%);
+      padding: 14px 18px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: clamp(16px, 5vw, 18px);
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(180deg, var(--accent), #ff3f91);
+      box-shadow: 0 12px 28px #ff5b9f55;
+      border: none;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .cta:active { transform: translateY(1px); }
+    .cta small { display:block; font-weight: 400; opacity: .9; }
+    .footer {
+      margin-top: 10px;
+      font-size: 12px;
+      opacity: .65;
+    }
+    .heart {
+      position: absolute;
+      right: -24px; top: -28px;
+      font-size: 110px;
+      opacity: .08;
+      transform: rotate(-18deg);
+      pointer-events: none;
+    }
+    @media (max-width: 380px) {
+      .card { border-radius: 0; }
+    }
+
+    /* ===== Carrossel automático quadrado ===== */
+    .carousel-auto {
+      margin: 8px auto 18px;
+      width: min(350px, 80%);
+      aspect-ratio: 1 / 1;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 6px solid #fff;
+      box-shadow: 0 12px 30px #ff5b9f33;
+      position: relative;
+      background: #f8f8f8;
+    }
+    .carousel-auto .slides {
+      display: flex;
+      height: 100%;
+      animation: slideShow4 var(--carousel-cycle) infinite ease-in-out;
+    }
+    .carousel-auto .slide {
+      flex: 0 0 100%;
+      height: 100%;
+    }
+    .carousel-auto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    @keyframes slideShow4 {
+      0%   { transform: translateX(0%); }
+      20%  { transform: translateX(0%); }
+      25%  { transform: translateX(-100%); }
+      45%  { transform: translateX(-100%); }
+      50%  { transform: translateX(-200%); }
+      70%  { transform: translateX(-200%); }
+      75%  { transform: translateX(-300%); }
+      95%  { transform: translateX(-300%); }
+      100% { transform: translateX(0%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" role="group" aria-label="Cronômetro do nosso amor">
+    <div class="heart">❤</div>
+    <h1>Arthur &amp; Lara</h1>
+    <p class="subtitle">contando cada segundinho 💞</p>
+
+    <!-- Carrossel quadrado com 4 fotos -->
+    <div class="carousel-auto">
+      <div class="slides">
+        <div class="slide"><img src="assets/1.jpeg" alt="Foto 1" loading="lazy"></div>
+        <div class="slide"><img src="assets/2.jpeg" alt="Foto 2" loading="lazy"></div>
+        <div class="slide"><img src="assets/3.jpeg" alt="Foto 3" loading="lazy"></div>
+        <div class="slide"><img src="assets/4.jpeg" alt="Foto 4" loading="lazy"></div>
+      </div>
+    </div>
+
+    <!-- Cronômetro -->
+    <div id="big-timer" class="timer" aria-live="polite">carregando…</div>
+
+    <div class="units" aria-hidden="true">
+      <div class="unit"><div id="years" class="num">0</div><div class="label">Anos</div></div>
+      <div class="unit"><div id="months" class="num">0</div><div class="label">Meses</div></div>
+      <div class="unit"><div id="days" class="num">0</div><div class="label">Dias</div></div>
+      <div class="unit"><div id="hours" class="num">0</div><div class="label">Horas</div></div>
+      <div class="unit"><div id="minutes" class="num">0</div><div class="label">Min</div></div>
+      <div class="unit"><div id="seconds" class="num">0</div><div class="label">Seg</div></div>
+    </div>
+
+    <p id="since" class="since"></p>
+
+    <!-- Botão de saudades -->
+    <button id="cta" class="cta" type="button" aria-label="Enviar mensagem de saudades no WhatsApp">
+      Estou com saudades!
+      <small>tocar para mandar no WhatsApp</small>
+    </button>
+
+    <div class="footer">Feito com ❤️ exclusivamente pra você.</div>
+  </div>
+
+  <script>
+    // ====== CONFIGURAÇÃO INICIAL ======
+    const startDate = new Date(2025, 6, 31, 0, 0, 0);
+    const sinceEl = document.getElementById('since');
+    const fmt = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'full', timeStyle: 'short' });
+    sinceEl.textContent = `Desde ${fmt.format(startDate)}.`;
+
+    const bigTimer = document.getElementById('big-timer');
+    const ids = ["years","months","days","hours","minutes","seconds"]
+      .reduce((acc,id)=> (acc[id]=document.getElementById(id), acc), {});
+
+    function diffYMDHMS(from, to) {
+      let y = to.getFullYear() - from.getFullYear();
+      let m = to.getMonth() - from.getMonth();
+      let d = to.getDate() - from.getDate();
+      let h = to.getHours() - from.getHours();
+      let min = to.getMinutes() - from.getMinutes();
+      let s = to.getSeconds() - from.getSeconds();
+
+      if (s < 0) { s += 60; min--; }
+      if (min < 0) { min += 60; h--; }
+      if (h < 0) { h += 24; d--; }
+
+      if (d < 0) {
+        const prevMonth = new Date(to.getFullYear(), to.getMonth(), 0);
+        d += prevMonth.getDate();
+        m--;
+      }
+      if (m < 0) { m += 12; y--; }
+
+      return { y, m, d, h, min, s };
+    }
+    const pad2 = n => n.toString().padStart(2,'0');
+
+    function tick() {
+      const now = new Date();
+      if (now < startDate) {
+        bigTimer.textContent = "Ainda faltam momentos até o grande dia…";
+        ["years","months","days","hours","minutes","seconds"].forEach(k => ids[k].textContent = "0");
+        return;
+      }
+      const { y, m, d, h, min, s } = diffYMDHMS(startDate, now);
+      ids.years.textContent   = y;
+      ids.months.textContent  = m;
+      ids.days.textContent    = d;
+      ids.hours.textContent   = h;
+      ids.minutes.textContent = min;
+      ids.seconds.textContent = s;
+      bigTimer.textContent = `${y} anos, ${m} meses, ${d} dias — ${pad2(h)}:${pad2(min)}:${pad2(s)}`;
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    // ====== Botão "Estou com saudades!" -> WhatsApp ======
+    const cta = document.getElementById('cta');
+    cta.addEventListener('click', () => {
+      const msg = `Oi, amor! 💖
+Tô com saudades… queria você aqui comigo agora.
+Olha nosso tempo juntinhos contando no site! ⏱️`;
+      const phoneIntl = "5527999491508";
+      const url = `https://wa.me/${phoneIntl}?text=${encodeURIComponent(msg)}`;
+      window.location.href = url;
+    });
+  </script>
+</body>
+</html>
